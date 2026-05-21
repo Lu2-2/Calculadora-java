@@ -1,6 +1,6 @@
 public class Operacoes {
 
-    public double opSoma(double a, double b){
+    public double opAdicao(double a, double b){
         return a + b;
     }
 
@@ -25,13 +25,12 @@ public class Operacoes {
     }
 
     public double opPorcentagem(double a, double b){
-        return (a*b) / 100 ;
+        return (a*100) / b ;
     }
 
-    public double opMedia(double a, double b, int c, double media){
-
-        for(int i = 0; i >= c; i++ ){
-            System.out.println("Digite");
-        }
+    public double opMedia(double soma, int cont){
+        return  soma / cont;
     }
+
+
 }

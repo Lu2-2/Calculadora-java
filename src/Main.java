@@ -1,15 +1,17 @@
 import java.util.Scanner;
 
-class Main{
-    public static void main(String[] args){
+public class Main {
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Operacoes op = new Operacoes();
         int resp;
-        double a, b = 0;
-        boolean autenticador = true;
+        double a = 0, b = 0;
 
-        do{
-            System.out.println("Seja bem-vindo. ");
+        System.out.println("Seja bem-vindo!");
+
+        do {
+            System.out.println("-----MENU-----");
             System.out.println("1. Soma ");
             System.out.println("2. Subtração ");
             System.out.println("3. Divisão ");
@@ -19,135 +21,135 @@ class Main{
             System.out.println("7. Porcentagem ");
             System.out.println("8. Média ");
             System.out.println("9. Fatorial ");
-            System.out.println("10. Fechar ");
+            System.out.println("0. Fechar ");
 
             resp = sc.nextInt();
 
-            switch (resp){
+            if ((resp == 6) ||  (resp == 9)){
+                System.out.println("Digite o número: ");
+                a = sc.nextDouble();
+            }
+
+            if(resp == 0){
+                break;
+            }
+
+            else if (resp >= 1 && resp <= 7){
+                System.out.println("Digite 1. número: ");
+                a = sc.nextDouble();
+                System.out.println("Digite 2. número: ");
+                b = sc.nextDouble();
+
+            } else if (resp != 8){
+                System.out.println("Opção invalida");
+                continue;
+            }
+
+            switch (resp) {
                 case 1:
-                    do {
-                        System.out.println("Digite 1. número: ");
-                        a = sc.nextDouble();
-                        System.out.println("Digite 2. número: ");
-                        b = sc.nextDouble();
+                    double adicao = op.opAdicao(a, b);
 
-                        System.out.println(op.opSoma(a, b));
+                    System.out.println(a + " + " + b);
+                    System.out.println("Resulta: " + adicao);
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
-
-                    }while(resp != 2);
                     break;
 
                 case 2:
-                    do {
-                        System.out.println("Digite 1. número: ");
-                        a = sc.nextDouble();
-                        System.out.println("Digite 2. número: ");
-                        b = sc.nextDouble();
+                    double subtracao = op.opSubtracao(a, b);
 
-                        System.out.println(op.opSubtracao(a, b));
+                    System.out.println(a + " - " + b);
+                    System.out.println("Resultado: " + subtracao);
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
-
-                    }while(resp != 2);
                     break;
 
                 case 3:
-                    do {
-                        System.out.println("Digite 1. número: ");
-                        a = sc.nextDouble();
-                        System.out.println("Digite 2. número: ");
-                        b = sc.nextDouble();
+                    double divisao = op.opDivisao(a, b);
 
-                        System.out.println(op.opDivisao(a, b));
+                    if (b == 0){
+                        System.out.println("Erro: Número não pode ser dividio por zero.");
+                    } else {
+                        System.out.println(a + " / " + b);
+                        System.out.println("Resultado: " + divisao);
+                    }
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
-
-                    }while(resp != 2);
                     break;
 
                 case 4:
-                    do {
-                        System.out.println("Digite 1. número: ");
-                        a = sc.nextDouble();
-                        System.out.println("Digite 2. número: ");
-                        b = sc.nextDouble();
+                    double multiplicacao = op.opMultiplicacao(a, b);
 
-                        System.out.println(op.opMultiplicacao(a, b));
+                    System.out.println(a + " x " + b);
+                    System.out.println("Resultado: " + multiplicacao);
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
-
-                    }while(resp != 2);
                     break;
 
                 case 5:
-                    do {
-                        System.out.println("Digite o número: ");
-                        a = sc.nextDouble();
-                        System.out.println("Digite a potência: ");
-                        b = sc.nextDouble();
+                    double potencia = op.opPotencia(a, b);
 
-                        System.out.println(op.opPotencia(a,b));
+                    System.out.println(a + " ^ " + b);
+                    System.out.println("Resultado: " + potencia);
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
-
-                    }while(resp != 2);
                     break;
 
                 case 6:
-                    do {
-                        System.out.println("Digite o número: ");
-                        a = sc.nextDouble();
+                    double raiz = op.opRaizQ(a);
 
-                        System.out.println(op.opRaizQ(a));
+                    System.out.println("A raiz quadrada de: " + a);
+                    System.out.println("Resulta em: " + raiz);
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
-
-                    }while(resp != 2);
                     break;
 
                 case 7:
-                    do {
-                        System.out.println("Digite o número para referência: ");
-                        a = sc.nextDouble();
-                        System.out.println("Digite o número da quantidade: ");
-                        b = sc.nextDouble();
+                    double porcentagem = op.opPorcentagem(a,b);
 
-                        System.out.println(op.opPorcentagem(a,b) + "%");
+                    System.out.println(a + " representa: " + porcentagem + "%");
+                    System.out.println("De " + b);
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
-
-                    }while(resp != 2);
                     break;
 
                 case 8:
-                    do {
-                        System.out.println("Digite o número para referência: ");
-                        a = sc.nextDouble();
-                        System.out.println("Digite o número da quantidade: ");
-                        b = sc.nextDouble();
+                    int cont = 0;
+                    int continuar = 0;
+                    double soma = 0;
 
-                        System.out.println(op.opMedia(a,b) + "%");
 
-                        System.out.println("Continuar (1) ou Alterrar (2)");
-                        resp = sc.nextInt();
+                    while(true){
+                        System.out.println("Adicione um número");
+                        double numeroDigitado = sc.nextDouble();
 
-                    }while(resp != 2);
-                    break;
+                        soma += numeroDigitado;
+                        cont += 1;
 
-                case 10:
-                    autenticador = false;
-                    break;
+                        if (cont >= 2){
+                            System.out.println("Deseja continuar com a soma?");
+                            System.out.println("Sim [1] Não [2]");
+                            continuar = sc.nextInt();
+                        }
+
+                        if (continuar == 2) {
+                            break;
+                        }
+                    }
+
+                    double media = op.opMedia(soma, cont);
+
+                    System.out.println("Soma dos números: " + soma);
+                    System.out.println("Quantidade de números: " + cont);
+                    System.out.println("Média: " + media);
             }
 
-        }while(autenticador == true);
+            System.out.println("Voltar para o menu?");
+            System.out.println("Sim [1] Não [2]");
+
+            resp = sc.nextInt();
+
+            if(resp == 2){
+                break;
+            }
+
+        } while (true);
+
         System.out.println("Sistema fechando...");
+
+        sc.close();
     }
 }
