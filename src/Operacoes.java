@@ -20,8 +20,8 @@ public class Operacoes {
         return Math.pow(a,b);
     }
 
-    public double opRaizQ(double a){
-        return Math.sqrt(a);
+    public double opRaizQ(double numDigitado){
+        return Math.sqrt(numDigitado);
     }
 
     public double opPorcentagem(double a, double b){
@@ -32,5 +32,7 @@ public class Operacoes {
         return  soma / cont;
     }
 
-
+    public int opFatorial(int fatorial, int i){
+        return fatorial * i;
+    }
 }

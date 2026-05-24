@@ -6,7 +6,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Operacoes op = new Operacoes();
         int resp;
-        double a = 0, b = 0;
+        double num1 = 0, num2 = 0;
+        double numUnico = 0;
 
         System.out.println("Seja bem-vindo!");
 
@@ -27,82 +28,78 @@ public class Main {
 
             if ((resp == 6) ||  (resp == 9)){
                 System.out.println("Digite o número: ");
-                a = sc.nextDouble();
+                numUnico = sc.nextDouble();
             }
 
-            if(resp == 0){
+            else if(resp == 0){
                 break;
             }
 
             else if (resp >= 1 && resp <= 7){
                 System.out.println("Digite 1. número: ");
-                a = sc.nextDouble();
+                num1 = sc.nextDouble();
                 System.out.println("Digite 2. número: ");
-                b = sc.nextDouble();
-
-            } else if (resp != 8){
-                System.out.println("Opção invalida");
-                continue;
+                num2 = sc.nextDouble();
             }
 
             switch (resp) {
                 case 1:
-                    double adicao = op.opAdicao(a, b);
+                    double adicao = op.opAdicao(num1,num2);
 
-                    System.out.println(a + " + " + b);
+                    System.out.println(num1 + " + " + num2);
                     System.out.println("Resulta: " + adicao);
 
                     break;
 
                 case 2:
-                    double subtracao = op.opSubtracao(a, b);
+                    double subtracao = op.opSubtracao(num1,num2);
 
-                    System.out.println(a + " - " + b);
+                    System.out.println(num1 + " - " + num2);
                     System.out.println("Resultado: " + subtracao);
 
                     break;
 
                 case 3:
-                    double divisao = op.opDivisao(a, b);
+                    double divisao = op.opDivisao(num1,num2);
 
-                    if (b == 0){
+                    if (num2 == 0){
                         System.out.println("Erro: Número não pode ser dividio por zero.");
                     } else {
-                        System.out.println(a + " / " + b);
+                        System.out.println(num1 + " / " + num2);
                         System.out.println("Resultado: " + divisao);
                     }
 
                     break;
 
                 case 4:
-                    double multiplicacao = op.opMultiplicacao(a, b);
+                    double multiplicacao = op.opMultiplicacao(num1,num2);
 
-                    System.out.println(a + " x " + b);
+                    System.out.println(num1 + " x " + num2);
                     System.out.println("Resultado: " + multiplicacao);
 
                     break;
 
                 case 5:
-                    double potencia = op.opPotencia(a, b);
+                    double potencia = op.opPotencia(num1,num2);
 
-                    System.out.println(a + " ^ " + b);
+                    System.out.println(num1 + " ^ " + num2);
                     System.out.println("Resultado: " + potencia);
 
                     break;
 
                 case 6:
-                    double raiz = op.opRaizQ(a);
+                    double raiz = op.opRaizQ(numUnico);
 
-                    System.out.println("A raiz quadrada de: " + a);
+                    System.out.println("A raiz quadrada de: " + numUnico);
                     System.out.println("Resulta em: " + raiz);
 
                     break;
 
                 case 7:
-                    double porcentagem = op.opPorcentagem(a,b);
+                    double porcentagem = op.opPorcentagem(num1,num2);
 
-                    System.out.println(a + " representa: " + porcentagem + "%");
-                    System.out.println("De " + b);
+                    System.out.println(num1 + " representa: " + porcentagem + "%");
+                    System.out.println("De " + num2);
 
                     break;
 
@@ -135,6 +132,17 @@ public class Main {
                     System.out.println("Soma dos números: " + soma);
                     System.out.println("Quantidade de números: " + cont);
                     System.out.println("Média: " + media);
+                    break;
+
+                case 9:
+                    int fatorial = 1;
+
+                    for (int i = 1; i <= numUnico; i++) {
+                        fatorial = op.opFatorial(fatorial, i);
+                    }
+
+                    System.out.println("O fatorial de " + numUnico + " é: " + fatorial);
+                    break;
             }
 
             System.out.println("Voltar para o menu?");
@@ -148,7 +156,7 @@ public class Main {
 
         } while (true);
 
-        System.out.println("Sistema fechando...");
+        System.out.println("Fechando o sistema ...");
 
         sc.close();
     }
