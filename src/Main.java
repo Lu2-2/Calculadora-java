@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -6,12 +7,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Operacoes op = new Operacoes();
         int resp;
-        double num1 = 0, num2 = 0;
-        double numUnico = 0;
 
         System.out.println("Seja bem-vindo!");
 
         do {
+            double num1 = 0, num2 = 0;
+            double numUnico = 0;
+
             System.out.println("-----MENU-----");
             System.out.println("1. Soma ");
             System.out.println("2. Subtração ");
@@ -25,6 +27,13 @@ public class Main {
             System.out.println("0. Fechar ");
 
             resp = sc.nextInt();
+
+            try {
+                resp = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um número válido.");
+                sc.nextLine();
+            }
 
             if ((resp == 6) ||  (resp == 9)){
                 System.out.println("Digite o número: ");
@@ -47,7 +56,7 @@ public class Main {
                     double adicao = op.opAdicao(num1,num2);
 
                     System.out.println(num1 + " + " + num2);
-                    System.out.println("Resulta: " + adicao);
+                    System.out.println("Resultado: " + adicao);
 
                     break;
 
@@ -63,7 +72,7 @@ public class Main {
                     double divisao = op.opDivisao(num1,num2);
 
                     if (num2 == 0){
-                        System.out.println("Erro: Número não pode ser dividio por zero.");
+                        System.out.println("Erro: Número não pode ser dividido por zero.");
                     } else {
                         System.out.println(num1 + " / " + num2);
                         System.out.println("Resultado: " + divisao);
@@ -88,6 +97,11 @@ public class Main {
                     break;
 
                 case 6:
+                    if(numUnico < 0){
+                        System.out.println("Erro: raiz de número negativo.");
+                        break;
+                    }
+
                     double raiz = op.opRaizQ(numUnico);
 
                     System.out.println("A raiz quadrada de: " + numUnico);
@@ -116,11 +130,9 @@ public class Main {
                         soma += numeroDigitado;
                         cont += 1;
 
-                        if (cont >= 2){
-                            System.out.println("Deseja continuar com a soma?");
-                            System.out.println("Sim [1] Não [2]");
-                            continuar = sc.nextInt();
-                        }
+                        System.out.println("Deseja continuar com a soma?");
+                        System.out.println("Sim [1] Não [2]");
+                        continuar = sc.nextInt();
 
                         if (continuar == 2) {
                             break;
@@ -135,13 +147,14 @@ public class Main {
                     break;
 
                 case 9:
-                    int fatorial = 1;
+                    long fatorial = 1;
 
                     for (int i = 1; i <= numUnico; i++) {
                         fatorial = op.opFatorial(fatorial, i);
                     }
 
-                    System.out.println("O fatorial de " + numUnico + " é: " + fatorial);
+                    System.out.println("O fatorial de " + numUnico);
+                    System.out.println("É: " + fatorial);
                     break;
             }
 

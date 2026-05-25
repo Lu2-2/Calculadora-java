@@ -32,7 +32,7 @@ public class Operacoes {
         return  soma / cont;
     }
 
-    public int opFatorial(int fatorial, int i){
+    public long opFatorial(long fatorial, int i){
         return fatorial * i;
     }
 }
